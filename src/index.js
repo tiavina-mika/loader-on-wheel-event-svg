@@ -30,10 +30,8 @@ const App = () => {
       setActive(active - 5)
     } else {
       setActive(active + 5);
-
     }
   }
-console.log(active)
   return (
       <Box bgcolor="#000" height="100vh" display="flex"
         justifyContent="center" alignItems="center" flexDirection="column"
