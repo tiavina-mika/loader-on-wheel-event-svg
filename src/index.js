@@ -6,17 +6,17 @@ import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles({
     progressValue: {
-      strokeDasharray: '78',
+      strokeDasharray: '284',
       fill:"none",
       stroke:"#31BCB1",
-      strokeWidth:"3",
+      strokeWidth:"12",
       strokeLinecap: 'round'
     },
     inactive: {
       fill:"none" ,
       stroke:"none",
       strokeLinecap: 'round',
-      strokeWidth:"3",
+      strokeWidth:"12",
     },
     circleIn: {
       fill:"url(#gradient)" ,
@@ -33,9 +33,9 @@ const App = () => {
     const { deltaY } = e;
 
     if (deltaY > 0) {
-      active < 78 ? setActive(active + 5): setActive(78);
+      active < 284 ? setActive(active + 5): setActive(284);
     } else {
-      active > -78 ? setActive(active - 5): setActive(78);
+      active > -284 ? setActive(active - 5): setActive(284);
     }
   }
   return (
@@ -43,7 +43,7 @@ const App = () => {
         justifyContent="center" alignItems="center" flexDirection="column"
         onWheel={onWheel}
       >
-        <svg viewBox="0 0 100 100" 
+        <svg viewBox="0 0 115 115" height="100" width="100"
         style={{transform:"rotate(180deg)"}}
         >
             {/* <svg 
@@ -58,17 +58,17 @@ const App = () => {
               className={classes.progressValue} 
               cx="60" 
               cy="60" 
-              r="12"  
+              r="45"  
               strokeDashoffset={active}
             />            
             <circle
               cx="60"
               cy="60"
-              r="12"
+              r="45"
               className={classes.inactive} 
             />
 
-             { active >= 78 && 
+             { active >= 284 && 
              <g>
                <defs>
                 <radialGradient id="gradient" cx="50%" cy="50%" r="55%">
@@ -83,13 +83,13 @@ const App = () => {
                     className={classes.circleIn} 
                     cx="60" 
                     cy="60" 
-                    r="9"  
+                    r="44"  
                   >
                     <animate
                       attributeName="r" 
                       dur="1s" 
-                      from="9"
-                      to="10" 
+                      from="44"
+                      to="45" 
                       repeatCount="indefinite" />
                   </circle>
               </g>
