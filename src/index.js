@@ -1,22 +1,29 @@
 import ReactDOM from "react-dom";
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, darken } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 
 
 const useStyles = makeStyles({
     progressValue: {
-      strokeDasharray: '94.2',
+      strokeDasharray: '78',
       fill:"none",
-      stroke:"#f77a52",
-      strokeWidth:"4"
-      // strokeDashoffset: '37.68',
+      stroke:"#31BCB1",
+      strokeWidth:"3",
+      strokeLinecap: 'round'
     },
     inactive: {
       fill:"none" ,
       stroke:"none",
-      strokeWidth:"4",
-    }
+      strokeLinecap: 'round',
+      strokeWidth:"3",
+    },
+    circleIn: {
+      fill:"url(#gradient)" ,
+      stroke:"#31BCB1",
+      strokeLinecap: 'round',
+      strokeWidth:"0.4",
+    },
 });
 
 const App = () => {
@@ -26,10 +33,9 @@ const App = () => {
     const { deltaY } = e;
 
     if (deltaY > 0) {
-      // active >= 0 ? setActive(active+5): setActive(0);
-      setActive(active - 5)
+      active < 78 ? setActive(active + 5): setActive(78);
     } else {
-      setActive(active + 5);
+      active > -78 ? setActive(active - 5): setActive(78);
     }
   }
   return (
@@ -40,19 +46,54 @@ const App = () => {
         <svg viewBox="0 0 100 100" 
         style={{transform:"rotate(180deg)"}}
         >
-            <circle
-              cx="60"
-              cy="60"
-              r="15"
-              className={classes.inactive} 
-            />
+            {/* <svg 
+              viewBox="0 0 5 30"
+              style={{transform: 'translate(10, 10)'}}
+              height="15"
+              widht="15"
+            transform="translate(60, 60)">
+                <path fill="#fff" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/>
+            </svg> */}
             <circle 
               className={classes.progressValue} 
               cx="60" 
               cy="60" 
-              r="15"  
+              r="12"  
               strokeDashoffset={active}
+            />            
+            <circle
+              cx="60"
+              cy="60"
+              r="12"
+              className={classes.inactive} 
             />
+
+             { active >= 78 && 
+             <g>
+               <defs>
+                <radialGradient id="gradient" cx="50%" cy="50%" r="55%">
+                    <stop stopColor="transparent" offset="0%" />
+                    <stop stopColor="#31BCB1" offset="20%" />
+                    <stop stopColor={`${darken('#31BCB1', 0.6)}`} offset="90%" />
+                    <stop stopColor={`${darken('#31BCB1', 0.1)}`} offset="100%" />
+                </radialGradient>
+               </defs>
+
+              <circle 
+                    className={classes.circleIn} 
+                    cx="60" 
+                    cy="60" 
+                    r="9"  
+                  >
+                    <animate
+                      attributeName="r" 
+                      dur="1s" 
+                      from="9"
+                      to="10" 
+                      repeatCount="indefinite" />
+                  </circle>
+              </g>
+              }
         </svg>
       </Box>
   );
