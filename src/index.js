@@ -47,14 +47,6 @@ const App = () => {
         <svg viewBox="0 0 115 115" height="100" width="100"
         style={{transform:"rotate(180deg)"}}
         >
-            {/* <svg 
-              viewBox="0 0 5 30"
-              style={{transform: 'translate(10, 10)'}}
-              height="15"
-              widht="15"
-            transform="translate(60, 60)">
-                <path fill="#fff" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/>
-            </svg> */}
             <circle 
               className={classes.progressValue} 
               cx="60" 
