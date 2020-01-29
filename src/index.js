@@ -43,6 +43,7 @@ const App = () => {
         justifyContent="center" alignItems="center" flexDirection="column"
         onWheel={onWheel}
       >
+        <Box color="#fff" fontSize={20}>Faite tourner la roue de la souris</Box>
         <svg viewBox="0 0 115 115" height="100" width="100"
         style={{transform:"rotate(180deg)"}}
         >
